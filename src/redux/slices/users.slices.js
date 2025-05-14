@@ -74,6 +74,16 @@ const users = createSlice({
           return;
         }
         state.users.loading = false;
+      })
+      .addCase(deleteUsers.fulfilled, (state, action) => {
+        state.users.data = state.users.data.filter(
+          (item) => item.id !== action.meta.arg
+        );
+        console.log(action.meta);
+      })
+      .addCase(createUsers.fulfilled, (state, action) => {
+        state.users.data.push(action.payload);
+        console.log(action.payload);
       });
   },
 });
