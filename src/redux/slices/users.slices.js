@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { api } from "../../api/client";
+import { api } from "../../api/clientt";
 import axios from "axios";
 
 export const fetchUsers = createAsyncThunk(
@@ -9,7 +9,7 @@ export const fetchUsers = createAsyncThunk(
       const response = await api.USERS.getAll(data);
       return response;
     } catch (error) {
-      return rejectWithValue;
+      return rejectWithValue(error);
     }
   }
 );

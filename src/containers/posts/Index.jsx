@@ -13,7 +13,7 @@ const Posts = () => {
     return (
         <div>
             {data?.map((post) => (
-                <div key={post.id}>{post.title}</div>
+                <div style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }} key={post.id}>{post.title}</div>
             ))}
         </div>
     );
