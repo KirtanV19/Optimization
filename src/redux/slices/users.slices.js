@@ -49,6 +49,7 @@ export const updateUsers = createAsyncThunk(
     }
   }
 );
+
 const initialState = {
   users: {
     data: [],
@@ -83,6 +84,15 @@ const users = createSlice({
       })
       .addCase(createUsers.fulfilled, (state, action) => {
         state.users.data.push(action.payload);
+        console.log(action.payload);
+      })
+      .addCase(updateUsers.fulfilled, (state, action) => {
+        const index = state.users.data.findIndex(
+          (u) => u.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.users.data[index] = action.payload;
+        }
         console.log(action.payload);
       });
   },

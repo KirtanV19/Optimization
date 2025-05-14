@@ -1,6 +1,11 @@
 import useUsers from "./useUsers";
-import { deleteUsers, createUsers } from "../../redux/slices/users.slices";
+import {
+    deleteUsers,
+    createUsers,
+    updateUsers,
+} from "../../redux/slices/users.slices";
 import { useDispatch } from "react-redux";
+
 const Users = () => {
     const dispatch = useDispatch();
 
@@ -21,6 +26,13 @@ const Users = () => {
     const handleCreate = () => {
         dispatch(createUsers({ name: "new user" }));
     };
+
+    const handleUpdate = (user) => {
+        dispatch(
+            updateUsers({ id: user.id, data: { name: `${user.name} Updated` } })
+        );
+    };
+
     return (
         <div>
             <button onClick={handleCreate}>Create</button>
@@ -37,7 +49,7 @@ const Users = () => {
                 >
                     {user.name}
                     <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                        <button>Edit</button>
+                        <button onClick={() => handleUpdate(user)}>Edit</button>
                         <button onClick={() => handleDelete(user.id)}>Delete</button>
                     </div>
                 </div>
