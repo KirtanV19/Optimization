@@ -14,6 +14,41 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
+export const createUsers = createAsyncThunk(
+  "users/createUsers",
+  async (user, { rejectWithValue }) => {
+    try {
+      const response = await api.USERS.create({ data: user });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteUsers = createAsyncThunk(
+  "users/deleteUsers",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await api.USERS.delete({ id });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUsers = createAsyncThunk(
+  "users/updateUsers",
+  async (id, data, { rejectWithValue }) => {
+    try {
+      const response = await api.USERS.update({ id, data });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 const initialState = {
   users: {
     data: [],
