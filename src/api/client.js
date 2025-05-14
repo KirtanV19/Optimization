@@ -40,7 +40,7 @@ export const api = {
       client({ method: METHODS.POST, url: `/todos`, data, ...config }),
     update: ({ id, data, ...config } = {}) =>
       client({ method: METHODS.PUT, url: `/todos/${id}`, data, ...config }),
-    delete: ({ id, ...config }) =>
+    delete: ({ id, ...config } = {}) =>
       client({ method: METHODS.DELETE, url: `/todos/${id}`, ...config }),
   },
 };
