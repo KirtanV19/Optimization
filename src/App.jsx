@@ -1,12 +1,8 @@
-import User from "./containers/users/User";
-import Posts from "./containers/posts/Index";
+import Users from "./containers/users/Index";
 const App = () => {
   return (
     <>
-      <User />
-      <br />
-      <br />
-      <Posts />
+      <Users />
     </>
   );
 };
